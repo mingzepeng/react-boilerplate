@@ -1,7 +1,7 @@
 {
   "name": "react-boilerplate",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.1",
+  "description": "a react boilerplate",
   "main": "main.js",
   "dependencies": {
     "es5-shim": "^4.3.1",
@@ -36,18 +36,17 @@
   },
   "scripts": {
     "start": "node ./server.js",
-    "mock": "cd ./mock & json-server --watch db.json --routes routes.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mingzepeng/react-scaffold.git"
+    "url": "https://github.com/mingzepeng/react-boilerplate.git"
   },
   "author": "Peng mingze <mingzepeng@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mingzepeng/react-scaffold/issues"
+    "url": "https://github.com/mingzepeng/react-boilerplate/issues"
   },
-  "homepage": "https://github.com/mingzepeng/react-scaffold"
+  "homepage": "https://github.com/mingzepeng/react-boilerplate"
 }
