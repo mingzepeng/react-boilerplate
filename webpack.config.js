@@ -2,7 +2,10 @@ var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+var autoprefixer = require('autoprefixer');
+var precss = require('precss');
+var cssgrace = require('cssgrace');
+var filterGradient = require('postcss-filter-gradient');
 module.exports = {
     entry: {
         main : path.join(__dirname,"./src/scripts/main.js")   
