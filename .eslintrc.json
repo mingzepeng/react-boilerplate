@@ -1,0 +1,37 @@
+{
+    "rules": {
+        "indent": [
+            1,
+            "tab"
+        ],
+        "quotes": [
+            1,
+            "single"
+        ],
+        "linebreak-style": [
+            1,
+            "windows"
+        ],
+        "semi": [
+            1,
+            "never"
+        ]
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node" : true
+    },
+    "extends": "eslint:recommended",
+    "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true,
+        "modules": true
+    },
+    "plugins": [
+        "react"
+    ],
+    "globals": {
+        "__DEBUG__": true
+    }
+}

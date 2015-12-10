@@ -30,6 +30,9 @@ module.exports = {
         new webpack.DefinePlugin({
             __DEBUG__: false //true/false
         }),
+        new webpack.ProvidePlugin({
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        }),
         new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"),
         new ExtractTextPlugin("[name].css",{allChunks: true}),
         new HtmlWebpackPlugin({
