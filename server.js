@@ -22,13 +22,9 @@ new WebpackDevServer(webpack(config), {
   hot: true,
   historyApiFallback: true,
   proxy : {
-    '/service/web/*' : {
-      target : 'http://10.45.11.102',// /service/web target  http://10.45.11.102/service/web
-      secure : false
-    },
-    '/api/*' : {
-      target : 'http://127.0.0.1:3000'// /service/web target  http://10.45.11.102/service/web
-    }
+    // '/api/*' : {
+    //   target : 'http://127.0.0.1:3000'//  target http://127.0.0.1:3000/api/*
+    // }
   }
 }).listen(port, ip, function (err) {
   if (err) {
