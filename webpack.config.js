@@ -12,13 +12,14 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname,'dist'),
-        // publicPath: "/scripts/",
+        publicPath: "/bundles/",
         filename: "[name].bundle.js"
     },
     module: {
         loaders: [
-            { test: /\.css$/,  loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader') },
-            { test : /\.jsx?$/ ,loader : 'babel?presets[]=react,presets[]=es2015' , exclude: /(node_modules|bower_components)/},
+            { test: /\.css$/,  loader : ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader',{publicPath : ''}) },
+            // { test: /\.jsx?$/, loader : 'uglify-loader!babel-loader?presets[]=react,presets[]=es2015' , exclude: /(node_modules|bower_components)/},
+            { test: /\.jsx?$/ ,loader : 'babel-loader' , query:{ presets : ['es2015','react'] } , exclude: /(node_modules|bower_components)/},
             { test: /\.(png|jpg|jpeg|gif)$/, loader: "url-loader?limit=30000" },
             { test: /\.(ttf|eot|svg|woff(2)?)((\?v=)?[?#a-z0-9]+)?$/, loader : "file-loader"}
         ]
@@ -27,14 +28,19 @@ module.exports = {
         return [autoprefixer, precss,cssgrace,filterGradient];
     },
     plugins : [ 
+        new webpack.optimize.UglifyJsPlugin({
+            mangle: {
+                except: ['$super', '$', 'exports', 'require']
+            }
+        }),
         new webpack.DefinePlugin({
             __DEBUG__: false //true/false
         }),
         new webpack.ProvidePlugin({
             'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
         }),
-        new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"),
-        new ExtractTextPlugin("[name].css",{allChunks: true}),
+        new webpack.optimize.CommonsChunkPlugin("commons", "commons.bundle.js"),
+        new ExtractTextPlugin("[name].bundle.css",{allChunks: true}),
         new HtmlWebpackPlugin({
             template : 'src/index.html',
             inject: true
