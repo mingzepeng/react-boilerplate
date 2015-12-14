@@ -1,6 +1,6 @@
 {
   "name": "react-boilerplate",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "a react boilerplate",
   "main": "main.js",
   "dependencies": {
