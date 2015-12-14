@@ -1,6 +1,6 @@
 ## React Boilerplate
 
-### Getting Started
+### 开始
 
 1. clone this repo
 2. cd into folder
@@ -34,10 +34,12 @@ new WebpackDevServer(webpack(config), {
   
 })
 ```
+关于apiPath的另外一些tips，可以查看 [前后端分离下的前后端交互路径问题](https://github.com/mingzepeng/react-boilerplate/blob/master/doc/apiPath.md)
+
 
 
 ### 开发注意事项
-目前对于在js中引入大于30KB的图片，即通过以下代码引入的方式是不支持的，原因是和后台的整合过程中，路径问题还没有一个很好的解决方案，因此建议超过30KB的图片在css文件中引入。
+目前对于在js中引入大于30KB的图片，即通过以下代码引入的方式是不支持的，原因是和后台的整合过程中，路径问题还没有一个很好的解决方案，因此超过30KB的图片在css文件中引入。
 ```javascript
 //目前请不要在javascript中按照如下方式引入图片,请使用css
 var url = require('large-img.png')

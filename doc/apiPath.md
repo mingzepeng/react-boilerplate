@@ -1,4 +1,4 @@
-### 前后端分离下的前端与后台交互的路径问题
+### 前后端分离下的前后端交互路径问题
 
 
 站点的地址有以下几种情况
@@ -8,8 +8,8 @@ http://www.example.com/site
 http://www.example.com/site/subsite
 ```
 
-```
 api地址会有以下几种情况
+```
 http://www.example.com/api
 http://www.example.com/site/api
 http://www.example.com/site/subsiteApi
