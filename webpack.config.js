@@ -12,13 +12,13 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname,'dist'),
-        // publicPath: "/scripts/",
+        // publicPath: "/bundles/",
         filename: "[name].bundle.js"
     },
     module: {
         loaders: [
             { test: /\.css$/,  loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader') },
-            { test : /\.jsx?$/ , loader : 'babel-loader' , query:{ presets : ['es2015','react'] } , exclude: /(node_modules|bower_components)/},
+            { test: /\.jsx?$/ , loader : 'babel-loader' , query:{ presets : ['es2015','react'] } , exclude: /(node_modules|bower_components)/},
             { test: /\.(png|jpg|jpeg|gif)$/, loader: "url-loader?limit=30000" },
             { test: /\.(ttf|eot|svg|woff(2)?)((\?v=)?[?#a-z0-9]+)?$/, loader : "file-loader"}
         ]

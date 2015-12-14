@@ -5,7 +5,7 @@ import React from 'react'
 import App from './components/app'
 
 if (__DEBUG__ === true) {
-	console.log('this is debug model')
+	console.log('this is debug mode')
 };
 
 ReactDom.render(<App/>, document.querySelector('#root'));

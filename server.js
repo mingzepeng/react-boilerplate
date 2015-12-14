@@ -20,12 +20,13 @@ if (typeof config.entry === 'string') {
 new WebpackDevServer(webpack(config), {
   contentBase: path.resolve(__dirname, './src'),
   hot: true,
-  historyApiFallback: true,
-  proxy : {
-    // '/api/*' : {
-    //   target : 'http://127.0.0.1:3000'//  target http://127.0.0.1:3000/api/*
-    // }
-  }
+  // publicPath: "/bundles/",
+  historyApiFallback: true
+  // proxy : {
+  //   '/api/*' : {
+  //     target : 'http://127.0.0.1:3000'//  target http://127.0.0.1:3000/api/*
+  //   }
+  // }
 }).listen(port, ip, function (err) {
   if (err) {
     console.log(err); //eslint-disable-line no-console
