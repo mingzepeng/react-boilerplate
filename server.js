@@ -21,15 +21,13 @@ new WebpackDevServer(webpack(config), {
   contentBase: path.resolve(__dirname, './src'),
   hot: true,
   historyApiFallback: true,
-  proxy : {
-    '/service/web/*' : {
-      target : 'http://10.45.11.102',// /service/web target  http://10.45.11.102/service/web
-      secure : false
-    },
-    '/api/*' : {
-      target : 'http://127.0.0.1:3000'// /service/web target  http://10.45.11.102/service/web
-    }
-  }
+  // proxy : {
+  //    /api/* 会指向  http://127.0.0.1:3000/api/*  如  /api/users 就会指向  http://127.0.0.1:3000/api/users
+  //   '/api/*' : {
+  //     target : 'http://127.0.0.1:3000'// 
+  //   }
+  // }
+  //
 }).listen(port, ip, function (err) {
   if (err) {
     console.log(err); //eslint-disable-line no-console
