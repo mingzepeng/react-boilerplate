@@ -35,7 +35,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
         }),
-        new webpack.optimize.CommonsChunkPlugin("commons", "commons.js"),
+        new webpack.optimize.CommonsChunkPlugin("commons", "commons.bundle.js"),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template : 'src/index.html',

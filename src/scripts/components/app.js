@@ -6,8 +6,12 @@ export default class App extends React.Component {
 		return (
 			<div className='app'>
 				Hello,please enjoy it
-				<img src={img} alt=""/>
-				<img src={cover} alt=""/>
+				<p>
+					<img src={img} alt=""/>
+				</p>
+				<p>
+					<img width="400px" height="400px" src={cover} alt=""/>
+				</p>
 			</div>
 		)
 	}
