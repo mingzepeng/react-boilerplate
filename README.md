@@ -1,12 +1,18 @@
 ## React Boilerplate
+脚手架适合单页应用，
+
 
 ### 开始
 
 1. clone this repo
 2. cd into folder
 3. `npm install`
-4. `npm start`
+4. `npm start` 启动开发服务器
 5. auto open http://yourIP:9000 (not localhost or 127.0.0.1 , for mobile test)
+
+
+### 启动restful测试数据服务器
+`npm start mock` 启动测试数据服务器，数据配置在mock文件夹里，更详细的配置请参考[json-server文档](https://github.com/typicode/json-server)
 
 ### 代码规范检查
 ```
@@ -15,25 +21,27 @@ npm run lint
 采用eslint对js代码进行检查，配置文件为.eslintrc.json ，可以参考官方文档[eslint](http://eslint.org/)
 
 ### 编译打包
-会在dist文件中输出合并后的js，css文件。
+会在dist文件中输出合并后的js，css，图片，字体等静态资源文件。
 ```
 npm run deploy
 ```
 
 
-### 代理设置
-采用webpack-dev-server作为开发服务器之后，如果需要请求后台人员提供的api接口，那么就会存在跨域的问题，因此需要设置webpack-dev-server的代理服务器，将webpack-dev-server服务器的一个path映射到api服务器。请更改server.js文件中的new WebpackDevServer 第二个参数的proxy属性，示例如下：
+### 设置代理
+`npm start`启动的是webpack-dev-server服务器并进行开发，如果需要请求api进行开发测试，那么就会存在跨域的问题，因此需要设置webpack-dev-server的代理服务器，将webpack-dev-server服务器的一个path映射到api服务器。请更改server.js文件中的new WebpackDevServer 第二个参数的proxy属性，示例如下：
 ```
-// /api/* 会映射 http://example.com:3000/api/* ，如 /api/users 映射 http://example.com:3000/api/users
+// `/api/*` 会映射 http://127.0.0.1:3000/api/* ，如 `/api/todos` 映射 http://127.0.0.1:3000/api/todos
 new WebpackDevServer(webpack(config), {
   proxy : {
     '/api/*' : {
-      target : 'http://example.com:3000'// 
+      target : 'http://127.0.0.1:3000'
     }
   }
   
 })
 ```
+已经内置集成了一个restful测试数据服务器json-server，通过`npm run mock`启动，并从webpack-dev-server指向该服务，通过 `http://yourIP:9000/api` 可以访问，[点击查看json-server文档](https://github.com/typicode/json-server)
+
 关于apiPath的另外一些tips，可以查看 [前后端分离下的前后端交互路径问题](https://github.com/mingzepeng/react-boilerplate/blob/master/doc/apiPath.md)
 
 

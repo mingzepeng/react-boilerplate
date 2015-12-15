@@ -4,7 +4,8 @@ var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.dev.config');
 var opn = require('opn');
-var ip = localIp.getLocalIP4();
+// var ip = localIp.getLocalIP4();
+var ip = '0.0.0.0';
 var port = 9000;
 
 if (typeof config.entry === 'string') {
@@ -16,27 +17,25 @@ if (typeof config.entry === 'string') {
   }
 }
 
-// console.log('config.entry',config.entry)
 new WebpackDevServer(webpack(config), {
   contentBase: path.resolve(__dirname, './src'),
   hot: true,
   //设置webpack-dev-server启动的时候，bundles的输出的路径，打包的时候这个publicPath没有作用
   publicPath: config.output.publicPath,
-  historyApiFallback: true
+  historyApiFallback: true,
   // /api/* 会指向  http://127.0.0.1:3000/api/*  如  /api/users 就会指向  http://127.0.0.1:3000/api/users
-  // proxy : {
-  //   '/api/*' : {
-  //     target : 'http://127.0.0.1:3000'// 
-  //   }
-  // }
-  //
+  proxy : {
+    '/api/*' : {
+      target : 'http://127.0.0.1:9001'
+    }
+  },
   historyApiFallback: true
-}).listen(port, ip, function (err) {
+}).listen(port, function (err) {
   if (err) {
     console.log(err); //eslint-disable-line no-console
   }else{
-  	opn('http://'+ ip + ':' + port);
-  	console.log('Listening at '+ip+':' + port); //eslint-disable-line no-console
+  	opn('http://127.0.0.1:' + port);
+  	console.log('Listening at http://127.0.0.1:' + port); //eslint-disable-line no-console
   }
 
 });

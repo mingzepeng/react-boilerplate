@@ -3,6 +3,13 @@
   "version": "0.1.4",
   "description": "a react boilerplate",
   "main": "main.js",
+  "scripts": {
+    "start": "node ./server.js",
+    "mock": "cd ./mock & json-server --watch db.json --routes routes.json --port 9001",
+    "lint": "eslint ./src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "webpack --config webpack.config.js"
+  },
   "dependencies": {
     "es5-shim": "^4.3.1",
     "es6-promise": "^3.0.2",
@@ -25,6 +32,7 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^1.6.2",
     "imports-loader": "^0.6.5",
+    "json-server": "^0.8.4",
     "opn": "^3.0.3",
     "postcss-filter-gradient": "^0.1.1",
     "postcss-loader": "^0.8.0",
@@ -35,12 +43,6 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.6",
     "webpack-dev-server": "^1.12.1"
-  },
-  "scripts": {
-    "start": "node ./server.js",
-    "lint": "eslint ./src",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
