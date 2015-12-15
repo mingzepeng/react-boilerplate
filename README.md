@@ -1,5 +1,6 @@
 ## React Boilerplate
-脚手架适合单页应用，
+这个脚手架项目专门为webpack+react开发单页应用定制，支持ie9以及其他现代浏览器，内置对React,Promise和fetch的支持，并采用postcss处理css。
+
 
 
 ### 开始
@@ -10,6 +11,15 @@
 4. `npm start` 启动开发服务器
 5. auto open http://yourIP:9000 (not localhost or 127.0.0.1 , for mobile test)
 
+### 内置部件
+webpack集成了对react jsx语法和es2015的支持，由babel实现。关于babel对es2015的支持情况，可以查看babel的相关文档[babel](http://babeljs.io/)
+
+采用postcss对css进行后处理，集成了postcss的以下几个插件。关于postcss的用法，可以查看官方文档[postcss](https://github.com/postcss/postcss)，更多插件访问[postcss.parts](http://postcss.parts/)
+
+1. autoprefixer 自动处理css前缀 [地址](https://github.com/postcss/autoprefixer)
+2. precss  支持部分sass的写法特性,包括variables, mixins, conditionals,Loops,Extends,Imports等等 [地址](https://github.com/jonathantneal/precss)
+3. cssgrace 自动生成兼容旧IE浏览器的css代码，国人开发，适合国情 [地址](https://github.com/cssdream/cssgrace)
+4. filterGradient 增加对旧版ie的background gradient支持 [地址](https://github.com/yuezk/postcss-filter-gradient)
 
 ### 启动restful测试数据服务器
 `npm start mock` 启动测试数据服务器，数据配置在mock文件夹里，更详细的配置请参考[json-server文档](https://github.com/typicode/json-server)
