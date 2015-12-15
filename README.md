@@ -20,6 +20,14 @@ npm run lint
 ```
 采用eslint对js代码进行检查，配置文件为.eslintrc.json ，可以参考官方文档[eslint](http://eslint.org/)
 
+### 执行单元测试
+```
+npm run test
+```
+采用karma和jasmine的组合进行单元测试，karma是一个针对web前端进行单元测试的自动化环境，jasmine是单元测试框架。单元测试的代码支持es6，请在test文件夹中新建测试文件。
+可以参考官方文档[karma](http://karma-runner.github.io/) [jasmine](http://jasmine.github.io/)
+
+
 ### 编译打包
 会在dist文件中输出合并后的js，css，图片，字体等静态资源文件。
 ```
