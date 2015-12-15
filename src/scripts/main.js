@@ -1,5 +1,5 @@
 require("../styles/style.css")
-require('es6-promise').polyfill() //promise polyfill
+require("babel-polyfill");
 import ReactDom from 'react-dom'
 import React from 'react'
 import App from './components/app'
