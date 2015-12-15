@@ -21,7 +21,7 @@ new WebpackDevServer(webpack(config), {
   contentBase: path.resolve(__dirname, './src'),
   hot: true,
   //设置webpack-dev-server启动的时候，bundles的输出的路径，打包的时候这个publicPath没有作用
-  // publicPath: "/bundles/",
+  publicPath: config.output.publicPath,
   historyApiFallback: true
   // proxy : {
   //   '/api/*' : {

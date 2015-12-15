@@ -7,8 +7,9 @@ var precss = require('precss');
 var cssgrace = require('cssgrace');
 var filterGradient = require('postcss-filter-gradient');
 module.exports = {
+    context: path.join(__dirname,'./src/scripts'),
     entry: {
-        main : path.join(__dirname,"./src/scripts/main.js")   
+        main : './main.js'
     },
     output: {
         path: path.join(__dirname,'dist'),
