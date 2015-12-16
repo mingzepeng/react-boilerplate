@@ -13,7 +13,8 @@ module.exports = {
     output: {
         path: path.join(__dirname,'hot'),
         // publicPath: "/bundles/",
-        filename: "[name].bundle.js"
+        filename: "[name].[hash].bundle.js",
+        chunkFilename: "[id].[hash].chunk.js"
     },
     module: {
         loaders: [
@@ -35,7 +36,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
         }),
-        new webpack.optimize.CommonsChunkPlugin("commons", "commons.bundle.js"),
+        new webpack.optimize.CommonsChunkPlugin("commons", "[name].[hash].bundle.js"),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template : 'src/index.html',

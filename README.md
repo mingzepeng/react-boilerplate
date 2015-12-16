@@ -58,18 +58,15 @@ new WebpackDevServer(webpack(config), {
 关于apiPath的另外一些tips，可以查看 [前后端分离下的前后端交互路径问题](https://github.com/mingzepeng/react-boilerplate/blob/master/doc/apiPath.md)
 
 
-### 开发注意事项
-~~目前对于在js中引入大于30KB的图片，即通过以下代码引入的方式是不支持的，原因是和后台的整合过程中，路径问题还没有一个很好的解决方案，因此超过30KB的图片在css文件中引入。~~
-
-已经通过设置publicPath解决这个问题，但仍然需要一些特殊的处理，请先阅读[前后端分离下的前后端交互路径问题](https://github.com/mingzepeng/react-boilerplate/blob/master/doc/apiPath.md)。采用这种方式的前提是，发布的静态资源文件已经确定是会放在后台项目的某一个固定的文件夹，默认是存放在后台项目根目录下面的bundles文件夹。如果需要更改，那么请更改webpack.config.js的output.publicPath属性。因为webpack在执行编译的时候，`url = require('large-img.png')` 返回的url值，实际是 '[publicPath]large-img.png', 此配置publicPath的默认值是/bundles/，所以最终结果会是 `/bundles/large-img.png`，和 `app.basePath` 进行连接后，即可得到在服务端的正确路径。
-
-```
-var url = require('large-img.png')
+### 图片和字体引入
+目前支持的图片引入为小于等于 30kb 的文件，会作为dataUrl编译在js或者css文件中，url返回dataUrl，超过该大小，会返回图片的url，css同理。
+```javascript
+var url = require('img.png')
 var img = new Image
-img.src = app.basePath + url
-
+img.src = url
 ```
-不过不建议大图（超过30KB）用这种方式链接进来，推荐用css。
+
+支持css引入字体文件，编译的时候会自动处理路径。
 
 ### 编译打包
 会在dist文件中输出合并后的js，css，图片，字体等静态资源文件。
