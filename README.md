@@ -77,4 +77,4 @@ npm run deploy
 ### 打包完成之后与后台整合
 在dist命令完成之后，会在dist文件夹中生成打包的文件，包括 index,js,css 以及图片字体等文件，请按照index.html的模板方式引入，head里面引入css文件，body底部引入js文件。
 
-项目默认打包后的静态资源文件都放在后台项目的bundles文件夹中（index.html可以不需要添加），如果需要更改，请更改webpack.config.js文件中的output.publicPath值，改为你实际存放的项目的文件夹名称，比如 `/assets/`。
+建议项目默认打包后的静态资源文件都放在后台项目的bundles文件夹中（index.html可以不需要添加）

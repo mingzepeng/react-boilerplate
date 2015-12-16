@@ -26,6 +26,11 @@ module.exports = {
             { test: /\.(ttf|eot|svg|woff(2)?)((\?v=)?[?#a-z0-9]+)?$/, loader : "file-loader"}
         ]
     },
+
+    resolve : {
+        root : path.resolve('./src')
+    },
+
     postcss: function () {
         return [autoprefixer, precss,cssgrace,filterGradient];
     },
