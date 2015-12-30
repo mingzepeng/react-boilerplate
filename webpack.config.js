@@ -4,8 +4,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
-var cssgrace = require('cssgrace');
+// var cssgrace = require('cssgrace');
 var filterGradient = require('postcss-filter-gradient');
+var atImport = require("postcss-import");
+var postcssUrl = require("postcss-url");
 module.exports = {
     context: path.join(__dirname,'./src/scripts'),
     entry: {
@@ -23,7 +25,7 @@ module.exports = {
             // { test: /\.jsx?$/, loader : 'uglify-loader!babel-loader?presets[]=react,presets[]=es2015' , exclude: /(node_modules|bower_components)/},
             { test: /\.jsx?$/ ,loader : 'babel-loader' , query:{ presets : ['es2015','react'] } , exclude: /(node_modules|bower_components)/},
             { test: /\.(png|jpg|jpeg|gif)$/, loader: "url-loader?limit=30000" },
-            { test: /\.(ttf|eot|svg|woff(2)?)((\?v=)?[?#a-z0-9]+)?$/, loader : "file-loader"}
+            { test: /\.(svg|ttf|eot|svg|woff(\(?2\)?)?)(\?[a-zA-Z_0-9.=&]*)?(#[a-zA-Z_0-9.=&]*)?$/, loader : "file-loader"}
         ]
     },
 
@@ -31,7 +33,13 @@ module.exports = {
         root : path.resolve('./src')
     },
     postcss: function () {
-        return [autoprefixer, precss,cssgrace,filterGradient];
+        return [atImport 
+                ,postcssUrl 
+                ,autoprefixer
+                ,precss
+                // ,cssgrace
+                ,filterGradient
+                ];
     },
     plugins : [ 
         new webpack.optimize.UglifyJsPlugin({

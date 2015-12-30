@@ -4,8 +4,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
-var cssgrace = require('cssgrace');
+// var cssgrace = require('cssgrace');
 var filterGradient = require('postcss-filter-gradient');
+var atImport = require("postcss-import");
+var postcssUrl = require("postcss-url");
 module.exports = {
     entry: {
         main : path.join(__dirname,"./src/scripts/main.js")   
@@ -19,11 +21,11 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.css$/,  loader: 'style-loader!css-loader!postcss-loader' },
-            // { test : /\.jsx?$/ ,loader : 'react-hot!babel?presets[]=react,presets[]=es2015' , exclude: /(node_modules|bower_components)/},
-            { test : /\.jsx?$/ , loader : 'babel-loader' , query:{ presets : ['es2015','react'] } , exclude: /(node_modules|bower_components)/},
+            { test : /\.jsx?$/ ,loader : 'react-hot!babel?presets[]=react,presets[]=es2015' , exclude: /(node_modules|bower_components)/},
+            // { test : /\.jsx?$/ , loader : 'babel-loader' , query:{ presets : ['es2015','react'] } , exclude: /(node_modules|bower_components)/},
             //如果不超过30000/1024kb,那么就直接采用dataUrl的形式,超过则返回链接,图片会复制到dist目录下
             { test: /\.(png|jpg|jpeg|gif)$/, loader: "url-loader?limit=30000" },
-            { test: /\.(ttf|eot|svg|woff(2)?)((\?v=)?[?#a-z0-9]+)?$/, loader : "file-loader"}
+            { test: /\.(svg|ttf|eot|svg|woff(\(?2\)?)?)(\?[a-zA-Z_0-9.=&]*)?(#[a-zA-Z_0-9.=&]*)?$/, loader : "file-loader"}
         ]
     },
 
@@ -32,7 +34,12 @@ module.exports = {
     },
 
     postcss: function () {
-        return [autoprefixer, precss,cssgrace,filterGradient];
+        return [atImport({ onImport : function(files){ files.forEach(this.addDependency); }.bind(this) }), 
+                postcssUrl ,
+                autoprefixer, 
+                precss,
+                // cssgrace,
+                filterGradient];
     },
     plugins : [ 
         new webpack.DefinePlugin({
