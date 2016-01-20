@@ -20,6 +20,8 @@ webpack集成了对react jsx语法和es2015的支持，由babel实现。关于ba
 2. precss  支持部分sass的写法特性,包括variables, mixins, conditionals,Loops,Extends,Imports等等 [地址](https://github.com/jonathantneal/precss)
 3. ~~cssgrace 自动生成兼容旧IE浏览器的css代码，国人开发，适合国情 [地址](https://github.com/cssdream/cssgrace)~~
 4. filterGradient 增加对旧版ie的background gradient支持 [地址](https://github.com/yuezk/postcss-filter-gradient)
+5. postcss-import ，支持import node_modules中的包
+6. postcss-url 对url()的路径进行转换 
 
 ### 启动restful测试数据服务器
 `npm start mock` 启动测试数据服务器，数据配置在mock文件夹里，更详细的配置请参考[json-server文档](https://github.com/typicode/json-server)
