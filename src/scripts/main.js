@@ -1,4 +1,4 @@
-require("../styles/style.css")
+require("../styles/style.less")
 require("babel-polyfill");
 import ReactDom from 'react-dom'
 import React from 'react'
