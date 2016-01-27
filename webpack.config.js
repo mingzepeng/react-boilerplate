@@ -11,7 +11,7 @@ var postcssUrl = require("postcss-url");
 module.exports = {
     context: path.join(__dirname,'./src/scripts'),
     entry: {
-        main : './main.js'
+        main : path.join(__dirname,"./src/scripts/main.js")
     },
     output: {
         path: path.join(__dirname,'dist'),
@@ -48,10 +48,9 @@ module.exports = {
             }
         }),
         new webpack.DefinePlugin({
-            __DEBUG__: false //true/false
-        }),
-        new webpack.ProvidePlugin({
-            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+            "process.env" : {
+                NODE_ENV : JSON.stringify("production")
+            }
         }),
         new webpack.optimize.CommonsChunkPlugin("commons", "[name].[hash].bundle.js"),
         new ExtractTextPlugin("[name].[hash].bundle.css",{allChunks: true}),
