@@ -6,7 +6,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
 	context: path.join(__dirname,'./src/scripts'),
 	entry: {
-		main : './main.js'
+		main : path.join(__dirname,"./src/scripts/main.js")
 	},
 	output: {
 		path: path.join(__dirname,'dist'),
@@ -35,7 +35,9 @@ module.exports = {
 			}
 		}),
 		new webpack.DefinePlugin({
-			__DEBUG__: false //true/false
+			"process.env" : {
+				NODE_ENV : JSON.stringify("production")
+			}
 		}),
 		new webpack.optimize.CommonsChunkPlugin("commons", "[name].[hash].bundle.js"),
 		new ExtractTextPlugin("[name].[hash].bundle.css",{allChunks: true}),
