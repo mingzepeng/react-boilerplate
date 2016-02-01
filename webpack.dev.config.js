@@ -62,6 +62,6 @@ module.exports = {
 		})
 	],
 	debug : true,
-	devtool : 'cheap-module-eval-source-map'
+	devtool : '#inline-source-map'
 	//devServer 配置在webpack.dev.server.js 中
 };
