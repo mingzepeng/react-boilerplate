@@ -23,7 +23,7 @@ module.exports = {
         loaders: [
             { test: /\.css$/,  loader : ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader',{publicPath : ''}) },
             // { test: /\.jsx?$/, loader : 'uglify-loader!babel-loader?presets[]=react,presets[]=es2015' , exclude: /(node_modules|bower_components)/},
-            { test: /\.jsx?$/ ,loader : 'babel-loader' , query:{ presets : ['es2015','react'] } , exclude: /(node_modules|bower_components)/},
+            { test: /\.jsx?$/ ,loader : 'babel-loader' , query:{ presets : ['es2015','react'], plugins : ['transform-es3-property-literals','transform-es3-member-expression-literals'] } , exclude: /(node_modules|bower_components)/},
             { test: /\.(png|jpg|jpeg|gif)$/, loader: "url-loader?limit=30000" },
             { test: /\.(svg|ttf|eot|svg|woff(\(?2\)?)?)(\?[a-zA-Z_0-9.=&]*)?(#[a-zA-Z_0-9.=&]*)?$/, loader : "file-loader"}
         ]
