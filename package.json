@@ -8,7 +8,8 @@
     "mock": "cd ./mock & json-server --watch db.json --routes routes.json --port 9001",
     "lint": "eslint ./src",
     "test": "karma start  --config karma.conf.js",
-    "deploy": "webpack --config webpack.config.js"
+    "clean": "rimraf dist",
+    "deploy": "npm run clean && cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "dependencies": {
     "babel-polyfill": "^6.3.14",
@@ -23,6 +24,8 @@
     "babel-plugin-transform-es3-property-literals": "^6.3.13",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
+    "babel-preset-react-hmre": "^1.1.0",
+    "cross-env": "^1.0.7",
     "css-loader": "^0.23.0",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.11.3",
@@ -45,8 +48,6 @@
     "postcss-loader": "^0.8.0",
     "postcss-url": "^5.0.2",
     "precss": "^1.3.0",
-    "quick-local-ip": "^1.0.7",
-    "react-hot-loader": "^1.3.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.6",

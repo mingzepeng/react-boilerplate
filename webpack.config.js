@@ -11,7 +11,7 @@ var postcssUrl = require("postcss-url");
 module.exports = {
     context: path.join(__dirname,'./src/scripts'),
     entry: {
-        main : path.join(__dirname,"./src/scripts/main.js")
+        main : './main.js'
     },
     output: {
         path: path.join(__dirname,'dist'),
@@ -23,7 +23,7 @@ module.exports = {
         loaders: [
             { test: /\.css$/,  loader : ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader',{publicPath : ''}) },
             // { test: /\.jsx?$/, loader : 'uglify-loader!babel-loader?presets[]=react,presets[]=es2015' , exclude: /(node_modules|bower_components)/},
-            { test: /\.jsx?$/ ,loader : 'babel-loader' , query:{ presets : ['es2015','react'], plugins : ['transform-es3-property-literals','transform-es3-member-expression-literals'] } , exclude: /(node_modules|bower_components)/},
+            { test: /\.jsx?$/ ,loader : 'babel' , exclude: /(node_modules|bower_components)/},
             { test: /\.(png|jpg|jpeg|gif)$/, loader: "url-loader?limit=30000" },
             { test: /\.(svg|ttf|eot|svg|woff(\(?2\)?)?)(\?[a-zA-Z_0-9.=&]*)?(#[a-zA-Z_0-9.=&]*)?$/, loader : "file-loader"}
         ]
@@ -42,11 +42,14 @@ module.exports = {
                 ];
     },
     plugins : [ 
-        new webpack.optimize.UglifyJsPlugin({
-            mangle: {
-                except: ['$super', '$', 'exports', 'require']
-            }
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compressor: {
+        //         warnings: false
+        //     },
+        //     mangle: {
+        //         except: ['$super', '$', 'exports', 'require']
+        //     }
+        // }),
         new webpack.DefinePlugin({
             "process.env" : {
                 NODE_ENV : JSON.stringify("production")
