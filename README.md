@@ -1,3 +1,5 @@
+项目新地址 [react-less-boilerplate](https://github.com/mingzepeng/react-less-boilerplate),请前往这个地址下载开发脚手架，此项目已被遗弃不更新
+ 
 ## React Boilerplate
 这个脚手架项目专门为webpack+react开发单页应用定制，支持ie9以及其他现代浏览器，内置对React,Promise和fetch的支持，并采用postcss处理css。
 
